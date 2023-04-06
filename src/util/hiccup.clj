@@ -1,5 +1,10 @@
-(ns util.hiccup)
+(ns util.hiccup
+  (:require [hicada.compiler :refer [compile]]))
 
   
 (defmacro compile-html [body]
-  `(compile-html-helper ~body))
+  (hicada.compiler/compile 
+    body
+    {:create-element 'react/createElement}))
+     ; :transform-fn (comp)
+     ; :array-children? false}))
